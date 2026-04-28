@@ -421,11 +421,19 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
   content:'';width:16px;height:1px;background:currentColor;opacity:.5;
 }
 
-/* ════ MOBILE FIXES ════ */
+
+
+
+
+
+
+
+
+/* ════ MOBILE — consolidated ════ */
 @media(max-width:768px){
 
   /* Nav */
-  nav{padding:1rem 1.5rem}
+  nav{padding:1rem 1.5rem !important}
   nav ul{display:none}
   .logo{color:var(--navy) !important}
   nav{background:rgba(247,245,240,.95) !important;backdrop-filter:blur(12px)}
@@ -437,23 +445,50 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
   .hero-eyebrow{font-size:.55rem}
   .hero-sub{font-size:.6rem}
 
-  /* Countdown */
+  /* Countdown — no sticky on mobile, plain section */
+  #scene-cd{height:auto !important}
+  #scene-cd .pin{position:relative !important;height:100vh !important;top:auto !important}
   .cd-content{padding:1.5rem 1rem}
   .cd-num{font-size:clamp(2.8rem,14vw,5rem)}
-  .cd-sep{font-size:2.5rem}
-  .cd-grid{gap:1rem}
+  .cd-sep{display:none}
+  .cd-grid{gap:1.5rem}
 
   /* Quote blocks */
+  .quote-block{min-height:40vh;padding:0 5vw}
   .quote-text{font-size:clamp(2rem,10vw,3.5rem)}
   .float-petal{display:none}
 
-  /* História cards — scale down for mobile */
-  #scene-hist{height:450vh}
-  .f-card-a{width:120px;height:160px;top:10%;left:5%}
-  .f-card-b{width:140px;height:110px;top:5%;right:5%}
-  .f-card-c{width:110px;height:145px;bottom:18%;left:10%}
-  .f-card-d{width:130px;height:120px;bottom:12%;right:5%}
-  .f-card-e{width:100px;height:100px;top:42%;left:3%}
+  /* História cards — smaller for mobile */
+  #scene-hist{height:500vh !important}
+  .f-card-a{width:90px;height:120px;top:10%;left:2%}
+  .f-card-b{width:105px;height:85px;top:5%;right:2%}
+  .f-card-c{width:85px;height:115px;bottom:20%;left:8%}
+  .f-card-d{width:100px;height:90px;bottom:14%;right:2%}
+  .f-card-e{width:85px;height:85px;top:42%;left:2%}
+
+  /* histInfo — single horizontal row */
+  #histInfo{
+    flex-direction:row !important;
+    flex-wrap:nowrap !important;
+    justify-content:flex-start !important;
+    gap:0 !important;
+    bottom:.8rem !important;
+    padding:0 .5rem !important;
+    width:100% !important;
+    left:0 !important;
+    transform:none !important;
+    overflow-x:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    scrollbar-width:none !important;
+  }
+  #histInfo::-webkit-scrollbar{display:none !important}
+  #histInfo > div[style*="width:1px"]{
+    display:block !important;width:1px !important;flex-shrink:0 !important;
+    background:rgba(255,255,255,.15) !important;align-self:stretch !important;margin:0 .6rem !important;
+  }
+  #histInfo > div{white-space:nowrap !important;text-align:center !important;flex:0 0 auto !important}
+  #histInfo > div > div:first-child{font-size:.85rem !important}
+  #histInfo > div > div:last-child{font-size:.42rem !important;letter-spacing:.12em !important}
 
   /* Section titles */
   .s-title{font-size:clamp(1.8rem,8vw,2.8rem)}
@@ -461,6 +496,15 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
   .feat-title{font-size:clamp(1.8rem,8vw,2.8rem)}
   .cards-fg .s-title{font-size:clamp(1.8rem,8vw,2.8rem)}
   .cards-bg-text{font-size:clamp(3rem,18vw,6rem)}
+
+  /* O Grande Dia — no sticky on mobile */
+  #scene-cards{height:auto !important}
+  #scene-cards .pin{
+    position:relative !important;height:100vh !important;top:auto !important;
+    background:var(--dark);flex-direction:column;justify-content:center;padding:0 5vw;
+  }
+  .feat-card{width:220px}
+  .feat-title{margin-bottom:1.5rem}
 
   /* Presença */
   .presenca-inner{grid-template-columns:1fr;gap:2.5rem;padding:0 1.5rem}
@@ -481,101 +525,12 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
   .local-inner{grid-template-columns:1fr;gap:2.5rem;padding:0 1.5rem}
   .local-map{aspect-ratio:4/3}
 
-  /* O grande dia — feat cards */
-  #scene-cards .pin{padding:0 4vw}
-  .feat-card{width:220px}
-  .feat-title{margin-bottom:1.5rem}
-
   /* Floating CTA */
   #floating-cta{bottom:1rem;right:1rem;gap:.4rem}
   .fcta-btn{padding:.7rem 1.2rem;font-size:.55rem}
 
-  /* Sections padding */
+  /* Section padding */
   #s-presenca,#s-presentes,#s-guia,#s-local{padding:5rem 0}
-
-  /* histInfo strip — stack vertically on mobile */
-  #histInfo{
-    flex-direction:column !important;
-    gap:1rem !important;
-    align-items:center;
-    bottom:1.5rem !important;
-  }
-  #histInfo > div[style*="width:1px"]{display:none}
-  #histInfo > div{white-space:normal !important}
-}
-
-/* ════ MOBILE FIXES v2 ════ */
-@media(max-width:768px){
-
-  /* Cards da história — menores para não cortar tanto */
-  .f-card-a{width:90px;height:120px;top:10%;left:2%}
-  .f-card-b{width:105px;height:85px;top:5%;right:2%}
-  .f-card-c{width:85px;height:115px;bottom:20%;left:8%}
-  .f-card-d{width:100px;height:90px;bottom:14%;right:2%}
-  .f-card-e{width:85px;height:85px;top:42%;left:2%}
-
-  /* histInfo — todos em linha única no mobile */
-  #histInfo{
-    flex-direction:row !important;
-    flex-wrap:nowrap !important;
-    justify-content:flex-start !important;
-    gap:0 !important;
-    bottom:.8rem !important;
-    padding:0 .5rem !important;
-    width:100% !important;
-    left:0 !important;
-    transform:none !important;
-    overflow-x:auto !important;
-    -webkit-overflow-scrolling:touch !important;
-    scrollbar-width:none !important;
-  }
-  #histInfo::-webkit-scrollbar{display:none !important}
-  #histInfo > div[style*="width:1px"]{
-    display:block !important;
-    width:1px !important;
-    flex-shrink:0 !important;
-    background:rgba(255,255,255,.15) !important;
-    align-self:stretch !important;
-    margin:0 .6rem !important;
-  }
-  #histInfo > div{
-    white-space:nowrap !important;
-    text-align:center !important;
-    flex:0 0 auto !important;
-  }
-  #histInfo > div > div:first-child{
-    font-size:.85rem !important;
-  }
-  #histInfo > div > div:last-child{
-    font-size:.42rem !important;
-    letter-spacing:.12em !important;
-  }
-}
-
-/* ════ MOBILE SCROLL — natural touch ════ */
-@media(max-width:768px){
-
-  /* Countdown — shorter sticky on mobile */
-  #scene-cd{height:100vh}
-  #scene-cd .pin{position:relative;height:100vh}
-
-  /* História — disable sticky, use natural scroll height */
-  #scene-hist{height:auto;min-height:0}
-  #scene-hist .pin{
-    position:relative;height:100vh;
-    display:flex;align-items:center;justify-content:center;
-  }
-
-  /* O Grande Dia — shorter */
-  #scene-cards{height:auto}
-  #scene-cards .pin{
-    position:relative;height:100vh;
-    background:var(--dark);
-    flex-direction:column;justify-content:center;padding:0 5vw;
-  }
-
-  /* Quote blocks shorter on mobile */
-  .quote-block{min-height:40vh}
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -789,11 +744,19 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
   content:'';width:16px;height:1px;background:currentColor;opacity:.5;
 }
 
-/* ════ MOBILE FIXES ════ */
+
+
+
+
+
+
+
+
+/* ════ MOBILE — consolidated ════ */
 @media(max-width:768px){
 
   /* Nav */
-  nav{padding:1rem 1.5rem}
+  nav{padding:1rem 1.5rem !important}
   nav ul{display:none}
   .logo{color:var(--navy) !important}
   nav{background:rgba(247,245,240,.95) !important;backdrop-filter:blur(12px)}
@@ -805,23 +768,50 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
   .hero-eyebrow{font-size:.55rem}
   .hero-sub{font-size:.6rem}
 
-  /* Countdown */
+  /* Countdown — no sticky on mobile, plain section */
+  #scene-cd{height:auto !important}
+  #scene-cd .pin{position:relative !important;height:100vh !important;top:auto !important}
   .cd-content{padding:1.5rem 1rem}
   .cd-num{font-size:clamp(2.8rem,14vw,5rem)}
-  .cd-sep{font-size:2.5rem}
-  .cd-grid{gap:1rem}
+  .cd-sep{display:none}
+  .cd-grid{gap:1.5rem}
 
   /* Quote blocks */
+  .quote-block{min-height:40vh;padding:0 5vw}
   .quote-text{font-size:clamp(2rem,10vw,3.5rem)}
   .float-petal{display:none}
 
-  /* História cards — scale down for mobile */
-  #scene-hist{height:450vh}
-  .f-card-a{width:120px;height:160px;top:10%;left:5%}
-  .f-card-b{width:140px;height:110px;top:5%;right:5%}
-  .f-card-c{width:110px;height:145px;bottom:18%;left:10%}
-  .f-card-d{width:130px;height:120px;bottom:12%;right:5%}
-  .f-card-e{width:100px;height:100px;top:42%;left:3%}
+  /* História cards — smaller for mobile */
+  #scene-hist{height:500vh !important}
+  .f-card-a{width:90px;height:120px;top:10%;left:2%}
+  .f-card-b{width:105px;height:85px;top:5%;right:2%}
+  .f-card-c{width:85px;height:115px;bottom:20%;left:8%}
+  .f-card-d{width:100px;height:90px;bottom:14%;right:2%}
+  .f-card-e{width:85px;height:85px;top:42%;left:2%}
+
+  /* histInfo — single horizontal row */
+  #histInfo{
+    flex-direction:row !important;
+    flex-wrap:nowrap !important;
+    justify-content:flex-start !important;
+    gap:0 !important;
+    bottom:.8rem !important;
+    padding:0 .5rem !important;
+    width:100% !important;
+    left:0 !important;
+    transform:none !important;
+    overflow-x:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    scrollbar-width:none !important;
+  }
+  #histInfo::-webkit-scrollbar{display:none !important}
+  #histInfo > div[style*="width:1px"]{
+    display:block !important;width:1px !important;flex-shrink:0 !important;
+    background:rgba(255,255,255,.15) !important;align-self:stretch !important;margin:0 .6rem !important;
+  }
+  #histInfo > div{white-space:nowrap !important;text-align:center !important;flex:0 0 auto !important}
+  #histInfo > div > div:first-child{font-size:.85rem !important}
+  #histInfo > div > div:last-child{font-size:.42rem !important;letter-spacing:.12em !important}
 
   /* Section titles */
   .s-title{font-size:clamp(1.8rem,8vw,2.8rem)}
@@ -829,6 +819,15 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
   .feat-title{font-size:clamp(1.8rem,8vw,2.8rem)}
   .cards-fg .s-title{font-size:clamp(1.8rem,8vw,2.8rem)}
   .cards-bg-text{font-size:clamp(3rem,18vw,6rem)}
+
+  /* O Grande Dia — no sticky on mobile */
+  #scene-cards{height:auto !important}
+  #scene-cards .pin{
+    position:relative !important;height:100vh !important;top:auto !important;
+    background:var(--dark);flex-direction:column;justify-content:center;padding:0 5vw;
+  }
+  .feat-card{width:220px}
+  .feat-title{margin-bottom:1.5rem}
 
   /* Presença */
   .presenca-inner{grid-template-columns:1fr;gap:2.5rem;padding:0 1.5rem}
@@ -849,101 +848,12 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
   .local-inner{grid-template-columns:1fr;gap:2.5rem;padding:0 1.5rem}
   .local-map{aspect-ratio:4/3}
 
-  /* O grande dia — feat cards */
-  #scene-cards .pin{padding:0 4vw}
-  .feat-card{width:220px}
-  .feat-title{margin-bottom:1.5rem}
-
   /* Floating CTA */
   #floating-cta{bottom:1rem;right:1rem;gap:.4rem}
   .fcta-btn{padding:.7rem 1.2rem;font-size:.55rem}
 
-  /* Sections padding */
+  /* Section padding */
   #s-presenca,#s-presentes,#s-guia,#s-local{padding:5rem 0}
-
-  /* histInfo strip — stack vertically on mobile */
-  #histInfo{
-    flex-direction:column !important;
-    gap:1rem !important;
-    align-items:center;
-    bottom:1.5rem !important;
-  }
-  #histInfo > div[style*="width:1px"]{display:none}
-  #histInfo > div{white-space:normal !important}
-}
-
-/* ════ MOBILE FIXES v2 ════ */
-@media(max-width:768px){
-
-  /* Cards da história — menores para não cortar tanto */
-  .f-card-a{width:90px;height:120px;top:10%;left:2%}
-  .f-card-b{width:105px;height:85px;top:5%;right:2%}
-  .f-card-c{width:85px;height:115px;bottom:20%;left:8%}
-  .f-card-d{width:100px;height:90px;bottom:14%;right:2%}
-  .f-card-e{width:85px;height:85px;top:42%;left:2%}
-
-  /* histInfo — todos em linha única no mobile */
-  #histInfo{
-    flex-direction:row !important;
-    flex-wrap:nowrap !important;
-    justify-content:flex-start !important;
-    gap:0 !important;
-    bottom:.8rem !important;
-    padding:0 .5rem !important;
-    width:100% !important;
-    left:0 !important;
-    transform:none !important;
-    overflow-x:auto !important;
-    -webkit-overflow-scrolling:touch !important;
-    scrollbar-width:none !important;
-  }
-  #histInfo::-webkit-scrollbar{display:none !important}
-  #histInfo > div[style*="width:1px"]{
-    display:block !important;
-    width:1px !important;
-    flex-shrink:0 !important;
-    background:rgba(255,255,255,.15) !important;
-    align-self:stretch !important;
-    margin:0 .6rem !important;
-  }
-  #histInfo > div{
-    white-space:nowrap !important;
-    text-align:center !important;
-    flex:0 0 auto !important;
-  }
-  #histInfo > div > div:first-child{
-    font-size:.85rem !important;
-  }
-  #histInfo > div > div:last-child{
-    font-size:.42rem !important;
-    letter-spacing:.12em !important;
-  }
-}
-
-/* ════ MOBILE SCROLL — natural touch ════ */
-@media(max-width:768px){
-
-  /* Countdown — shorter sticky on mobile */
-  #scene-cd{height:100vh}
-  #scene-cd .pin{position:relative;height:100vh}
-
-  /* História — disable sticky, use natural scroll height */
-  #scene-hist{height:auto;min-height:0}
-  #scene-hist .pin{
-    position:relative;height:100vh;
-    display:flex;align-items:center;justify-content:center;
-  }
-
-  /* O Grande Dia — shorter */
-  #scene-cards{height:auto}
-  #scene-cards .pin{
-    position:relative;height:100vh;
-    background:var(--dark);
-    flex-direction:column;justify-content:center;padding:0 5vw;
-  }
-
-  /* Quote blocks shorter on mobile */
-  .quote-block{min-height:40vh}
 }
 </style>
 
@@ -1381,12 +1291,13 @@ function setupHistConverge(){
 setupHistConverge();
 
 // Connect timeline to scroll via scrub
+const isMob = window.innerWidth < 768;
 ScrollTrigger.create({
   trigger: histScene,
   start: 'top top',
   end: 'bottom bottom',
-  pin: histPin,
-  scrub: 0.8,
+  pin: isMob ? false : histPin,
+  scrub: isMob ? 1.2 : 0.8,
   animation: histTl,
   onRefresh: setupHistConverge
 });
@@ -1398,18 +1309,20 @@ const cardsScene = document.getElementById('scene-cards');
 const cardsTrack = document.getElementById('cardsTrack');
 const cardsDots  = document.querySelectorAll('#cardsProg .fp');
 
-ScrollTrigger.create({
-  trigger: cardsScene,
-  start: 'top top',
-  end: 'bottom bottom',
-  pin: cardsScene.querySelector('.pin'),
-  scrub: 0.6,
-  onUpdate: self => {
-    const maxX = cardsTrack.scrollWidth - cardsTrack.parentElement.offsetWidth;
-    gsap.set(cardsTrack,{x:-self.progress*maxX});
-    cardsDots.forEach((d,i)=>d.classList.toggle('on',i===Math.min(cardsDots.length-1,Math.round(self.progress*(cardsDots.length-1)))));
-  }
-});
+if(window.innerWidth > 768){
+  ScrollTrigger.create({
+    trigger: cardsScene,
+    start: 'top top',
+    end: 'bottom bottom',
+    pin: cardsScene.querySelector('.pin'),
+    scrub: 0.6,
+    onUpdate: self => {
+      const maxX = cardsTrack.scrollWidth - cardsTrack.parentElement.offsetWidth;
+      gsap.set(cardsTrack,{x:-self.progress*maxX});
+      cardsDots.forEach((d,i)=>d.classList.toggle('on',i===Math.min(cardsDots.length-1,Math.round(self.progress*(cardsDots.length-1)))));
+    }
+  });
+}
 
 // ══════════════════════════════════════
 // TOUCH SWIPE for O Grande Dia (mobile)
