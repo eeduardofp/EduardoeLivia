@@ -1387,7 +1387,7 @@ if (window.innerWidth > 768) {
 } else {
   // Mobile: touch drives the animation directly, no sticky
   let touchStartY = 0;
-  let touchCurrentP = 0.15;
+  let touchCurrentP = 0;
 
   histScene.addEventListener('touchstart', e => {
     touchStartY = e.touches[0].clientY;
