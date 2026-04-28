@@ -459,7 +459,7 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
   .float-petal{display:none}
 
   /* História cards — smaller for mobile */
-  #scene-hist{height:500vh !important}
+  #scene-hist{height:300vh !important}
   .f-card-a{width:90px;height:120px;top:10%;left:2%}
   .f-card-b{width:105px;height:85px;top:5%;right:2%}
   .f-card-c{width:85px;height:115px;bottom:20%;left:8%}
@@ -782,7 +782,7 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
   .float-petal{display:none}
 
   /* História cards — smaller for mobile */
-  #scene-hist{height:500vh !important}
+  #scene-hist{height:300vh !important}
   .f-card-a{width:90px;height:120px;top:10%;left:2%}
   .f-card-b{width:105px;height:85px;top:5%;right:2%}
   .f-card-c{width:85px;height:115px;bottom:20%;left:8%}
@@ -1297,9 +1297,12 @@ ScrollTrigger.create({
   start: 'top top',
   end: 'bottom bottom',
   pin: isMob ? false : histPin,
+  pinSpacing: false,
   scrub: isMob ? 1.2 : 0.8,
+  anticipatePin: 1,
   animation: histTl,
-  onRefresh: setupHistConverge
+  onRefresh: setupHistConverge,
+  invalidateOnRefresh: true
 });
 
 // ══════════════════════════════════════
