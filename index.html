@@ -1154,6 +1154,7 @@ function updateHistCards() {
 
   const p = histP;
   const vw = window.innerWidth, vh = window.innerHeight;
+  const isMobile = vw < 768;
 
   // ── PHASES ──
   // 0.00–0.15 → cards fade in, spread naturally across screen
@@ -1193,7 +1194,6 @@ function updateHistCards() {
 
   // Posições finais desejadas (centro de cada card na tela)
   // Linha horizontal com sobreposição + E&L acima ao centro
-  const isMobile = vw < 768;
   const cardW  = isMobile ? 110 : 200;
   const overlap = isMobile ? -10 : -20; // gap positivo entre cards
   const totalW = cardW * 4 - overlap * 3;
