@@ -1405,7 +1405,7 @@ if (window.innerWidth > 768) {
   // Reset touch accumulator on section entry
   const mobileObs = new IntersectionObserver(entries => {
     if (!entries[0].isIntersecting) touchCurrentP = 0;
-  }, {threshold: 0});
+  }, {threshold: 0.1});
   mobileObs.observe(histScene);
 }
 
