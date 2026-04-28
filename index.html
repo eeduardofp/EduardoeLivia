@@ -1396,7 +1396,7 @@ if (window.innerWidth > 768) {
   histScene.addEventListener('touchmove', e => {
     const dy = touchStartY - e.touches[0].clientY;
     // Each 80px of swipe = full animation range
-    touchCurrentP = Math.max(0, Math.min(1, touchCurrentP + dy / (window.innerHeight * 0.8)));
+    touchCurrentP = Math.max(0, Math.min(1, touchCurrentP + dy / (window.innerHeight * 0.35)));
     touchStartY = e.touches[0].clientY;
     histTarget = touchCurrentP;
     if (!histRaf) histRaf = requestAnimationFrame(updateHistCards);
