@@ -1011,28 +1011,28 @@ function updateHistCards() {
 
   // card positions — each starts from its CSS corner, floats, then converges
   // convergence targets = center of viewport relative to card's CSS position
-  const cxA = vw * 0.5 - vw * 0.08 - 100;  // card-a css: left:8%
-  const cyA = vh * 0.5 - vh * 0.12 - 130;
+  const cxA = -vw * 0.18;
+  const cyA = -vh * 0.08;
   hca.style.transform = `translate(${lerp(0, cxA, ec) + fX * 0.8}px, ${lerp(0, cyA, ec) + fY}px)`;
   hca.style.opacity = appearE;
 
-  const cxB = -(vw * 0.1 + 120);            // card-b css: right:10%
-  const cyB = vh * 0.5 - vh * 0.08 - 90;
+  const cxB = vw * 0.18;
+  const cyB = -vh * 0.12;
   hcb.style.transform = `translate(${lerp(0, cxB, ec) + fX * -0.6}px, ${lerp(0, cyB, ec) + fY * -0.8}px)`;
   hcb.style.opacity = appearE;
 
-  const cxC = vw * 0.5 - vw * 0.15 - 90;   // card-c css: left:15%
-  const cyC = -(vh * 0.15 + 120);
+  const cxC = -vw * 0.06;
+  const cyC = vh * 0.06;
   hcc.style.transform = `translate(${lerp(0, cxC, ec) + fX * 0.5}px, ${lerp(0, cyC, ec) + fY * 0.6}px)`;
   hcc.style.opacity = appearE;
 
-  const cxD = -(vw * 0.08 + 110);           // card-d css: right:8%
-  const cyD = -(vh * 0.1 + 100);
+  const cxD = vw * 0.06;
+  const cyD = vh * 0.10;
   hcd.style.transform = `translate(${lerp(0, cxD, ec) + fX * -0.9}px, ${lerp(0, cyD, ec) + fY * -0.6}px)`;
   hcd.style.opacity = appearE;
 
-  const cxE = vw * 0.5 - vw * 0.05 - 80;   // card-e css: left:5%
-  const cyE = -(vh * 0.45 - 80);
+  const cxE = vw * 0.28;
+  const cyE = -vh * 0.04;
   hce.style.transform = `translate(${lerp(0, cxE, ec) + fX}px, ${lerp(0, cyE, ec) + fY * 1.2}px)`;
   hce.style.opacity = appearE;
 
