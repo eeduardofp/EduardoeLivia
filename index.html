@@ -129,7 +129,7 @@ nav.s a:hover{color:var(--navy)}
 /* ════════════════════
    HISTÓRIA — Jeton cards merge
 ════════════════════ */
-#scene-hist{height:500vh}
+#scene-hist{height:600vh}
 #scene-hist .pin{
   position:sticky;top:0;height:100vh;
   display:flex;align-items:center;justify-content:center;
@@ -1011,29 +1011,52 @@ function updateHistCards() {
 
   // card positions — each starts from its CSS corner, floats, then converges
   // convergence targets = center of viewport relative to card's CSS position
-  const cxA = vw * -0.351;
-  const cyA = vh * -0.103;
-  hca.style.transform = `translate(${lerp(0, cxA, ec) + fX * 0.8}px, ${lerp(0, cyA, ec) + fY}px)`;
+  // Posições iniciais CSS de cada card (centro do card na tela)
+  // Usadas para calcular o translate necessário até a posição final
+  const initAx = vw * 0.08  + 100;   // f-card-a: left:8%, w:200
+  const initAy = vh * 0.12  + 130;   // top:12%, h:260
+  const initBx = vw * 0.90  - 120;   // f-card-b: right:10%, w:240
+  const initBy = vh * 0.08  +  90;   // top:8%, h:180
+  const initCx = vw * 0.15  +  90;   // f-card-c: left:15%, w:180
+  const initCy = vh * 0.85  - 120;   // bottom:15%, h:240
+  const initDx = vw * 0.92  - 110;   // f-card-d: right:8%, w:220
+  const initDy = vh * 0.90  - 100;   // bottom:10%, h:200
+  const initEx = vw * 0.05  +  80;   // f-card-e: left:5%, w:160
+  const initEy = vh * 0.45  +  80;   // top:45%, h:160
+
+  // Posições finais desejadas (centro de cada card na tela)
+  // Linha horizontal com sobreposição + E&L acima ao centro
+  const cardW  = 200;
+  const overlap = -10; // gap positivo entre cards
+  const totalW = cardW * 4 - overlap * 3;
+  const lineY  = vh * 0.55;          // linha das fotos: 55% da altura
+  const lineX0 = vw / 2 - totalW / 2 + cardW / 2; // X do primeiro card
+
+  const targAx = lineX0;
+  const targAy = lineY;
+  const targBx = lineX0 + (cardW - overlap) * 1;
+  const targBy = lineY;
+  const targCx = lineX0 + (cardW - overlap) * 2;
+  const targCy = lineY;
+  const targDx = lineX0 + (cardW - overlap) * 3;
+  const targDy = lineY;
+  const targEx = vw / 2;             // E&L: centro horizontal
+  const targEy = vh * 0.28;          // acima da linha
+
+  // translate = destino - origem (CSS já posicionou o card na origem)
+  hca.style.transform = `translate(${lerp(0, targAx - initAx, ec) + fX * 0.8}px, ${lerp(0, targAy - initAy, ec) + fY}px)`;
   hca.style.opacity = appearE;
 
-  const cxB = vw * -0.115;
-  const cyB = vh * 0.041;
-  hcb.style.transform = `translate(${lerp(0, cxB, ec) + fX * -0.6}px, ${lerp(0, cyB, ec) + fY * -0.8}px)`;
+  hcb.style.transform = `translate(${lerp(0, targBx - initBx, ec) + fX * -0.6}px, ${lerp(0, targBy - initBy, ec) + fY * -0.8}px)`;
   hcb.style.opacity = appearE;
 
-  const cxC = vw * 0.100;
-  const cyC = vh * -0.128;
-  hcc.style.transform = `translate(${lerp(0, cxC, ec) + fX * 0.5}px, ${lerp(0, cyC, ec) + fY * 0.6}px)`;
+  hcc.style.transform = `translate(${lerp(0, targCx - initCx, ec) + fX * 0.5}px, ${lerp(0, targCy - initCy, ec) + fY * 0.6}px)`;
   hcc.style.opacity = appearE;
 
-  const cxD = vw * 0.344;
-  const cyD = vh * 0.029;
-  hcd.style.transform = `translate(${lerp(0, cxD, ec) + fX * -0.9}px, ${lerp(0, cyD, ec) + fY * -0.6}px)`;
+  hcd.style.transform = `translate(${lerp(0, targDx - initDx, ec) + fX * -0.9}px, ${lerp(0, targDy - initDy, ec) + fY * -0.6}px)`;
   hcd.style.opacity = appearE;
 
-  const cxE = vw * -0.004;
-  const cyE = vh * -0.354;
-  hce.style.transform = `translate(${lerp(0, cxE, ec) + fX}px, ${lerp(0, cyE, ec) + fY * 1.2}px)`;
+  hce.style.transform = `translate(${lerp(0, targEx - initEx, ec) + fX}px, ${lerp(0, targEy - initEy, ec) + fY * 1.2}px)`;
   hce.style.opacity = appearE;
 
   // text fades as convergence starts
