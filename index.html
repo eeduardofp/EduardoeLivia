@@ -1387,7 +1387,7 @@ if (window.innerWidth > 768) {
 } else {
   // Mobile: touch drives the animation directly, no sticky
   let touchStartY = 0;
-  let touchCurrentP = 0;
+  let touchCurrentP = 0.15;
 
   histScene.addEventListener('touchstart', e => {
     touchStartY = e.touches[0].clientY;
@@ -1396,7 +1396,7 @@ if (window.innerWidth > 768) {
   histScene.addEventListener('touchmove', e => {
     const dy = touchStartY - e.touches[0].clientY;
     // Each 80px of swipe = full animation range
-    touchCurrentP = Math.max(0, Math.min(1, touchCurrentP + dy / (window.innerHeight * 0.35)));
+    touchCurrentP = Math.max(0, Math.min(1, touchCurrentP + dy / (window.innerHeight * 0.8)));
     touchStartY = e.touches[0].clientY;
     histTarget = touchCurrentP;
     if (!histRaf) histRaf = requestAnimationFrame(updateHistCards);
@@ -1405,7 +1405,7 @@ if (window.innerWidth > 768) {
   // Reset touch accumulator on section entry
   const mobileObs = new IntersectionObserver(entries => {
     if (!entries[0].isIntersecting) touchCurrentP = 0;
-  }, {threshold: 0.1});
+  }, {threshold: 0});
   mobileObs.observe(histScene);
 }
 
