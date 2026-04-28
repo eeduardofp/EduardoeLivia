@@ -503,6 +503,68 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
   #histInfo > div[style*="width:1px"]{display:none}
   #histInfo > div{white-space:normal !important}
 }
+
+/* ════ MOBILE FIXES v2 ════ */
+@media(max-width:768px){
+
+  /* Cards da história — menores para não cortar tanto */
+  .f-card-a{width:90px;height:120px;top:10%;left:2%}
+  .f-card-b{width:105px;height:85px;top:5%;right:2%}
+  .f-card-c{width:85px;height:115px;bottom:20%;left:8%}
+  .f-card-d{width:100px;height:90px;bottom:14%;right:2%}
+  .f-card-e{width:85px;height:85px;top:42%;left:2%}
+
+  /* histInfo — horizontal no mobile */
+  #histInfo{
+    flex-direction:row !important;
+    flex-wrap:wrap !important;
+    justify-content:center !important;
+    gap:.6rem 1.2rem !important;
+    bottom:1rem !important;
+    padding:0 1rem;
+    width:100%;
+    left:0 !important;
+    transform:none !important;
+  }
+  #histInfo > div[style*="width:1px"]{display:none !important}
+  #histInfo > div{
+    white-space:normal !important;
+    text-align:center;
+    flex:0 0 auto;
+  }
+  #histInfo > div > div:first-child{
+    font-size:1rem !important;
+  }
+  #histInfo > div > div:last-child{
+    font-size:.45rem !important;
+  }
+}
+
+/* ════ MOBILE SCROLL — natural touch ════ */
+@media(max-width:768px){
+
+  /* Countdown — shorter sticky on mobile */
+  #scene-cd{height:100vh}
+  #scene-cd .pin{position:relative;height:100vh}
+
+  /* História — disable sticky, use natural scroll height */
+  #scene-hist{height:auto;min-height:0}
+  #scene-hist .pin{
+    position:relative;height:100vh;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* O Grande Dia — shorter */
+  #scene-cards{height:auto}
+  #scene-cards .pin{
+    position:relative;height:100vh;
+    background:var(--dark);
+    flex-direction:column;justify-content:center;padding:0 5vw;
+  }
+
+  /* Quote blocks shorter on mobile */
+  .quote-block{min-height:40vh}
+}
 </style>
 </head>
 <body>
@@ -795,6 +857,68 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
   #histInfo > div[style*="width:1px"]{display:none}
   #histInfo > div{white-space:normal !important}
 }
+
+/* ════ MOBILE FIXES v2 ════ */
+@media(max-width:768px){
+
+  /* Cards da história — menores para não cortar tanto */
+  .f-card-a{width:90px;height:120px;top:10%;left:2%}
+  .f-card-b{width:105px;height:85px;top:5%;right:2%}
+  .f-card-c{width:85px;height:115px;bottom:20%;left:8%}
+  .f-card-d{width:100px;height:90px;bottom:14%;right:2%}
+  .f-card-e{width:85px;height:85px;top:42%;left:2%}
+
+  /* histInfo — horizontal no mobile */
+  #histInfo{
+    flex-direction:row !important;
+    flex-wrap:wrap !important;
+    justify-content:center !important;
+    gap:.6rem 1.2rem !important;
+    bottom:1rem !important;
+    padding:0 1rem;
+    width:100%;
+    left:0 !important;
+    transform:none !important;
+  }
+  #histInfo > div[style*="width:1px"]{display:none !important}
+  #histInfo > div{
+    white-space:normal !important;
+    text-align:center;
+    flex:0 0 auto;
+  }
+  #histInfo > div > div:first-child{
+    font-size:1rem !important;
+  }
+  #histInfo > div > div:last-child{
+    font-size:.45rem !important;
+  }
+}
+
+/* ════ MOBILE SCROLL — natural touch ════ */
+@media(max-width:768px){
+
+  /* Countdown — shorter sticky on mobile */
+  #scene-cd{height:100vh}
+  #scene-cd .pin{position:relative;height:100vh}
+
+  /* História — disable sticky, use natural scroll height */
+  #scene-hist{height:auto;min-height:0}
+  #scene-hist .pin{
+    position:relative;height:100vh;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* O Grande Dia — shorter */
+  #scene-cards{height:auto}
+  #scene-cards .pin{
+    position:relative;height:100vh;
+    background:var(--dark);
+    flex-direction:column;justify-content:center;padding:0 5vw;
+  }
+
+  /* Quote blocks shorter on mobile */
+  .quote-block{min-height:40vh}
+}
 </style>
 
 
@@ -877,7 +1001,7 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
 </div>
 
 <!-- ════ HISTÓRIA — cards Jeton ════ -->
-<div class="sticky-scene" id="scene-hist">
+<div class="sticky-scene" id="scene-hist" style="">
   <div class="pin" id="histPin">
     <!-- ghost text -->
     <div class="cards-bg-text" id="histBgText">Como tudo<br>começou</div>
@@ -1180,21 +1304,23 @@ function updateHistCards() {
   // convergence targets = center of viewport relative to card's CSS position
   // Posições iniciais CSS de cada card (centro do card na tela)
   // Usadas para calcular o translate necessário até a posição final
-  // Initial positions — different for mobile (smaller cards)
-  const initAx = isMobile ? vw*0.05+60  : vw*0.08+100;
-  const initAy = isMobile ? vh*0.10+80  : vh*0.12+130;
-  const initBx = isMobile ? vw*0.95-70  : vw*0.90-120;
-  const initBy = isMobile ? vh*0.05+55  : vh*0.08+90;
-  const initCx = isMobile ? vw*0.10+55  : vw*0.15+90;
-  const initCy = isMobile ? vh*0.82-72  : vh*0.85-120;
-  const initDx = isMobile ? vw*0.95-65  : vw*0.92-110;
-  const initDy = isMobile ? vh*0.88-60  : vh*0.90-100;
-  const initEx = isMobile ? vw*0.03+50  : vw*0.05+80;
-  const initEy = isMobile ? vh*0.42+50  : vh*0.45+80;
+  // Initial positions — match CSS card sizes exactly
+  // Mobile: a(90x120), b(105x85), c(85x115), d(100x90), e(85x85)
+  // Desktop: a(200x260), b(240x180), c(180x240), d(220x200), e(160x160)
+  const initAx = isMobile ? vw*0.02+45  : vw*0.08+100;
+  const initAy = isMobile ? vh*0.10+60  : vh*0.12+130;
+  const initBx = isMobile ? vw*0.98-52  : vw*0.90-120;
+  const initBy = isMobile ? vh*0.05+42  : vh*0.08+90;
+  const initCx = isMobile ? vw*0.08+42  : vw*0.15+90;
+  const initCy = isMobile ? vh*0.80-57  : vh*0.85-120;
+  const initDx = isMobile ? vw*0.98-50  : vw*0.92-110;
+  const initDy = isMobile ? vh*0.86-45  : vh*0.90-100;
+  const initEx = isMobile ? vw*0.02+42  : vw*0.05+80;
+  const initEy = isMobile ? vh*0.42+42  : vh*0.45+80;
 
   // Posições finais desejadas (centro de cada card na tela)
   // Linha horizontal com sobreposição + E&L acima ao centro
-  const cardW  = isMobile ? 110 : 200;
+  const cardW  = isMobile ? 90 : 200;
   const overlap = isMobile ? -10 : -20; // gap positivo entre cards
   const totalW = cardW * 4 - overlap * 3;
   const lineY  = vh * 0.55;          // linha das fotos: 55% da altura
@@ -1250,12 +1376,38 @@ function updateHistCards() {
   }
 }
 
-window.addEventListener('scroll', () => {
-  const r = histScene.getBoundingClientRect();
-  const sceneH = histScene.offsetHeight - window.innerHeight;
-  histTarget = Math.max(0, Math.min(1, -r.top / sceneH));
-  if (!histRaf) histRaf = requestAnimationFrame(updateHistCards);
-}, {passive: true});
+// Desktop: scroll-driven / Mobile: touch-driven
+if (window.innerWidth > 768) {
+  window.addEventListener('scroll', () => {
+    const r = histScene.getBoundingClientRect();
+    const sceneH = histScene.offsetHeight - window.innerHeight;
+    histTarget = Math.max(0, Math.min(1, -r.top / sceneH));
+    if (!histRaf) histRaf = requestAnimationFrame(updateHistCards);
+  }, {passive: true});
+} else {
+  // Mobile: touch drives the animation directly, no sticky
+  let touchStartY = 0;
+  let touchCurrentP = 0;
+
+  histScene.addEventListener('touchstart', e => {
+    touchStartY = e.touches[0].clientY;
+  }, {passive: true});
+
+  histScene.addEventListener('touchmove', e => {
+    const dy = touchStartY - e.touches[0].clientY;
+    // Each 80px of swipe = full animation range
+    touchCurrentP = Math.max(0, Math.min(1, touchCurrentP + dy / (window.innerHeight * 0.8)));
+    touchStartY = e.touches[0].clientY;
+    histTarget = touchCurrentP;
+    if (!histRaf) histRaf = requestAnimationFrame(updateHistCards);
+  }, {passive: true});
+
+  // Reset touch accumulator on section entry
+  const mobileObs = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) touchCurrentP = 0;
+  }, {threshold: 0.1});
+  mobileObs.observe(histScene);
+}
 
 // ── O GRANDE DIA — horizontal cards ──
 const cardsScene=document.getElementById('scene-cards');
@@ -1351,32 +1503,44 @@ document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
 (function(){
   const track = document.getElementById('cardsTrack');
   if(!track) return;
-  let startX = 0, startScroll = 0, isDragging = false;
-  let currentOffset = 0;
+  let startX = 0, currentOffset = 0, velX = 0, lastX = 0, rafId = null;
 
-  function getMaxOffset(){
-    return track.scrollWidth - track.parentElement.offsetWidth;
-  }
+  function getMaxOffset(){ return Math.max(0, track.scrollWidth - track.parentElement.offsetWidth) }
 
-  track.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-    startScroll = currentOffset;
-    isDragging = true;
-  }, {passive:true});
-
-  track.addEventListener('touchmove', e => {
-    if(!isDragging) return;
-    const dx = startX - e.touches[0].clientX;
-    currentOffset = Math.max(0, Math.min(getMaxOffset(), startScroll + dx));
+  function applyOffset(offset){
+    currentOffset = Math.max(0, Math.min(getMaxOffset(), offset));
     track.style.transform = `translateX(-${currentOffset}px)`;
-    // update dots
-    const p = currentOffset / getMaxOffset();
+    const p = getMaxOffset() > 0 ? currentOffset / getMaxOffset() : 0;
     document.querySelectorAll('#cardsProg .fp').forEach((d,i,arr) => {
       d.classList.toggle('on', i === Math.round(p*(arr.length-1)));
     });
+  }
+
+  // Momentum after touchend
+  function momentum(){
+    if(Math.abs(velX) < 0.5){ rafId = null; return; }
+    velX *= 0.92;
+    applyOffset(currentOffset + velX);
+    rafId = requestAnimationFrame(momentum);
+  }
+
+  track.addEventListener('touchstart', e => {
+    cancelAnimationFrame(rafId);
+    startX = e.touches[0].clientX;
+    lastX = startX;
+    velX = 0;
   }, {passive:true});
 
-  track.addEventListener('touchend', () => { isDragging = false; });
+  track.addEventListener('touchmove', e => {
+    const dx = lastX - e.touches[0].clientX;
+    velX = dx;
+    lastX = e.touches[0].clientX;
+    applyOffset(currentOffset + dx);
+  }, {passive:true});
+
+  track.addEventListener('touchend', () => {
+    rafId = requestAnimationFrame(momentum);
+  });
 })();
 
 </script>
