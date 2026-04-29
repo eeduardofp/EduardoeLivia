@@ -677,6 +677,50 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
 .place-grid .place-card:nth-child(2):hover{transform:translateY(-8px) rotate(.8deg) scale(1.01) !important}
 .place-grid .place-card:nth-child(3){transform:rotate(-1deg)}
 .place-grid .place-card:nth-child(3):hover{transform:translateY(-8px) rotate(-1deg) scale(1.01) !important}
+
+/* ════ GUEST AUTOCOMPLETE ════ */
+.autocomplete-drop{
+  position:absolute;top:calc(100% + 4px);left:0;right:0;
+  background:var(--cream);
+  border:1px solid rgba(149,165,141,.3);
+  z-index:200;display:none;
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+  max-height:200px;overflow-y:auto;
+}
+.autocomplete-drop.open{display:block}
+.autocomplete-item{
+  padding:.75rem 1rem;
+  font-family:'Jost',sans-serif;font-size:.85rem;font-weight:300;
+  color:var(--text);cursor:pointer;
+  border-bottom:1px solid rgba(149,165,141,.12);
+  transition:background .2s;
+}
+.autocomplete-item:last-child{border-bottom:none}
+.autocomplete-item:hover{background:rgba(149,165,141,.1)}
+.autocomplete-item strong{color:var(--navy);font-weight:400}
+
+/* Selected tags */
+.selected-wrap{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(149,165,141,.2)}
+.selected-label{
+  font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--sage);margin-bottom:.8rem;display:block;
+}
+.selected-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.selected-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.4rem .9rem;
+  background:var(--navy);color:#fff;
+  font-family:'Jost',sans-serif;font-size:.72rem;font-weight:300;
+}
+.selected-tag button{
+  background:none;border:none;color:rgba(255,255,255,.6);
+  cursor:pointer;font-size:.9rem;line-height:1;padding:0;
+  transition:color .2s;
+}
+.selected-tag button:hover{color:#fff}
+
+.btn:disabled{opacity:.4 !important;cursor:not-allowed !important;transform:none !important}
+.btn:not(:disabled){opacity:1;cursor:pointer}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -1080,6 +1124,50 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
 .place-grid .place-card:nth-child(2):hover{transform:translateY(-8px) rotate(.8deg) scale(1.01) !important}
 .place-grid .place-card:nth-child(3){transform:rotate(-1deg)}
 .place-grid .place-card:nth-child(3):hover{transform:translateY(-8px) rotate(-1deg) scale(1.01) !important}
+
+/* ════ GUEST AUTOCOMPLETE ════ */
+.autocomplete-drop{
+  position:absolute;top:calc(100% + 4px);left:0;right:0;
+  background:var(--cream);
+  border:1px solid rgba(149,165,141,.3);
+  z-index:200;display:none;
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+  max-height:200px;overflow-y:auto;
+}
+.autocomplete-drop.open{display:block}
+.autocomplete-item{
+  padding:.75rem 1rem;
+  font-family:'Jost',sans-serif;font-size:.85rem;font-weight:300;
+  color:var(--text);cursor:pointer;
+  border-bottom:1px solid rgba(149,165,141,.12);
+  transition:background .2s;
+}
+.autocomplete-item:last-child{border-bottom:none}
+.autocomplete-item:hover{background:rgba(149,165,141,.1)}
+.autocomplete-item strong{color:var(--navy);font-weight:400}
+
+/* Selected tags */
+.selected-wrap{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(149,165,141,.2)}
+.selected-label{
+  font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--sage);margin-bottom:.8rem;display:block;
+}
+.selected-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.selected-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.4rem .9rem;
+  background:var(--navy);color:#fff;
+  font-family:'Jost',sans-serif;font-size:.72rem;font-weight:300;
+}
+.selected-tag button{
+  background:none;border:none;color:rgba(255,255,255,.6);
+  cursor:pointer;font-size:.9rem;line-height:1;padding:0;
+  transition:color .2s;
+}
+.selected-tag button:hover{color:#fff}
+
+.btn:disabled{opacity:.4 !important;cursor:not-allowed !important;transform:none !important}
+.btn:not(:disabled){opacity:1;cursor:pointer}
 </style>
 
 
@@ -1214,42 +1302,43 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
       <p class="s-body rv rv-d2">Confirme sua presença até <strong>19 de agosto de 2026</strong>.</p>
     </div>
     <div>
-      <form id="presenceForm">
-        <div class="fg rv">
-          <label class="fl">Nome completo</label>
-          <input type="text" class="fi" placeholder="Seu nome completo" required>
+      <!-- GUEST LIST FORM -->
+      <div id="guestForm">
+
+        <!-- Search + autocomplete -->
+        <div class="fg rv" style="position:relative">
+          <label class="fl">Digite seu nome</label>
+          <input type="text" class="fi" id="guestSearch" placeholder="Ex: Eduardo..." oninput="onGuestInput()" autocomplete="off">
+          <div class="autocomplete-drop" id="autocompleteDrop"></div>
         </div>
-        <div class="fg rv rv-d1">
-          <label class="fl">Confirmação de presença</label>
-          <select class="fsel" required>
-            <option value="">Selecione</option>
-            <option value="sim">✓ Sim, estarei presente</option>
-            <option value="nao">✗ Não poderei comparecer</option>
-          </select>
+
+        <!-- Selected names -->
+        <div class="selected-wrap rv rv-d1" id="selectedWrap" style="display:none">
+          <div class="selected-label">Confirmando presença de:</div>
+          <div class="selected-tags" id="selectedTags"></div>
         </div>
-        <div class="fg rv rv-d2">
-          <label class="fl">Cidade de origem</label>
-          <select class="fsel" id="cidadeSelect" onchange="toggleCarona()">
-            <option value="">Selecione</option>
-            <option value="joinville">Joinville – SC</option>
-            <option value="poa">Porto Alegre – RS</option>
-            <option value="outra">Outra cidade</option>
-          </select>
-        </div>
-        <div class="toggle-row" id="caronaRow" style="display:none">
+
+        <!-- Carona -->
+        <div class="toggle-row rv" id="caronaRow" style="display:none">
           <div>
             <div class="tlt">Tenho espaço no carro para caronas</div>
-            <div class="tlsub">Ajude outros convidados de Joinville a chegar juntos 🚗</div>
+            <div class="tlsub">Ajude outros convidados de Joinville 🚗</div>
           </div>
           <label class="tog">
-            <input type="checkbox">
+            <input type="checkbox" id="caronaCheck">
             <div class="tog-track"></div>
             <div class="tog-thumb"></div>
           </label>
         </div>
-        <button type="submit" class="btn rv" style="margin-top:2.2rem">Confirmar presença</button>
-      </form>
-      <div class="success-msg" id="successMsg">🌿 Obrigado! Presença confirmada. Estamos ansiosos para celebrar com você.</div>
+
+        <button class="btn rv" style="margin-top:2.2rem;opacity:.4;cursor:not-allowed" id="confirmBtn" onclick="submitPresence()" disabled>
+          Confirmar presença
+        </button>
+        <div class="form-note rv" style="margin-top:.8rem;font-size:.65rem;color:var(--muted)">
+          Selecione ao menos um nome para confirmar
+        </div>
+      </div>
+      <div class="success-msg" id="successMsg">🌿 Presença confirmada! Estamos ansiosos para celebrar com vocês.</div>
     </div>
   </div>
 </section>
@@ -1577,18 +1666,106 @@ function switchTab(id,btn){
   btn.classList.add('on');
 }
 
-// ── CARONA ──
-function toggleCarona(){
-  document.getElementById('caronaRow').style.display=
-    document.getElementById('cidadeSelect').value==='joinville'?'flex':'none';
+// ── GUEST AUTOCOMPLETE ──
+const GUESTS = [
+  'Zuza','Naara','João','Mari','Biel','Ana','Gui','Gabi','Kaleb',
+  'Ana Maria','Isaque','Beth','Jonas','Kessia','Samara','Tico','Eric',
+  'Babi','Yasmin','Sarah','Tiago O','Yaya','Filipe O','Lala','Piko',
+  'Davi Peres','Mateus','Bea','Ivan','Fran','Eduardo','Camila'
+];
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzeKUgF6DU4VBRKAeIo42-gOUdMtyHUG1wA8XcSsqm61LHa50JGyfEg0Neys5UBGfvIUA/exec';
+
+let selectedGuests = new Set();
+
+function onGuestInput(){
+  const q = document.getElementById('guestSearch').value.trim();
+  const drop = document.getElementById('autocompleteDrop');
+
+  if(q.length < 1){ drop.classList.remove('open'); drop.innerHTML=''; return; }
+
+  const matches = GUESTS.filter(n =>
+    n.toLowerCase().includes(q.toLowerCase()) && !selectedGuests.has(n)
+  );
+
+  if(matches.length === 0){ drop.classList.remove('open'); drop.innerHTML=''; return; }
+
+  drop.innerHTML = matches.map(name => {
+    // highlight matching part
+    const re = new RegExp(`(${q})`, 'gi');
+    const highlighted = name.replace(re, '<strong>$1</strong>');
+    return `<div class="autocomplete-item" onclick="selectGuest('${name}')">${highlighted}</div>`;
+  }).join('');
+  drop.classList.add('open');
 }
 
-// ── FORM ──
-document.getElementById('presenceForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  this.style.display='none';
-  document.getElementById('successMsg').style.display='block';
+function selectGuest(name){
+  selectedGuests.add(name);
+  document.getElementById('guestSearch').value = '';
+  document.getElementById('autocompleteDrop').classList.remove('open');
+  document.getElementById('autocompleteDrop').innerHTML = '';
+  updateSelected();
+}
+
+function removeGuest(name){
+  selectedGuests.delete(name);
+  updateSelected();
+}
+
+function updateSelected(){
+  const wrap = document.getElementById('selectedWrap');
+  const tags = document.getElementById('selectedTags');
+  const btn  = document.getElementById('confirmBtn');
+  const caronaRow = document.getElementById('caronaRow');
+
+  if(selectedGuests.size > 0){
+    wrap.style.display = 'block';
+    tags.innerHTML = Array.from(selectedGuests).map(name =>
+      `<div class="selected-tag">${name}<button onclick="removeGuest('${name}')" title="Remover">×</button></div>`
+    ).join('');
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+    caronaRow.style.display = 'flex';
+  } else {
+    wrap.style.display = 'none';
+    tags.innerHTML = '';
+    btn.disabled = true;
+    btn.style.opacity = '.4';
+    btn.style.cursor = 'not-allowed';
+    caronaRow.style.display = 'none';
+  }
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', e => {
+  if(!e.target.closest('#guestSearch') && !e.target.closest('#autocompleteDrop')){
+    document.getElementById('autocompleteDrop').classList.remove('open');
+  }
 });
+
+async function submitPresence(){
+  const btn = document.getElementById('confirmBtn');
+  const carona = document.getElementById('caronaCheck').checked;
+  const names = Array.from(selectedGuests);
+
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        nomes: names.join(', '),
+        carona: carona ? 'Sim' : 'Não',
+        data: new Date().toLocaleString('pt-BR')
+      })
+    });
+  } catch(e){}
+
+  document.getElementById('guestForm').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+}
 
 // ── PIX ──
 function copyPix(){
