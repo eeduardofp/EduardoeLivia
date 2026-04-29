@@ -623,6 +623,60 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
   /* Section padding */
   #s-presenca,#s-presentes,#s-guia,#s-local{padding:5rem 0}
 }
+
+/* ════ POLAROID — feat cards e place cards ════ */
+
+/* O Grande Dia — feat cards: estilo original escuro */
+
+/* Guia POA — place cards polaroid */
+.place-card{
+  background:#fff !important;
+  border:none !important;
+  border-radius:2px !important;
+  padding:12px 12px 44px 12px !important;
+  box-shadow:0 8px 24px rgba(0,0,0,.11), 0 2px 6px rgba(0,0,0,.05) !important;
+  transition:transform .4s cubic-bezier(.175,.885,.32,1.1),box-shadow .4s !important;
+  overflow:visible !important;
+  position:relative;
+}
+.place-card:hover{
+  transform:translateY(-8px) rotate(-1deg) scale(1.01) !important;
+  box-shadow:0 20px 48px rgba(0,0,0,.16) !important;
+}
+/* grain on place cards */
+.place-card::before{
+  content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size:120px;opacity:.03;mix-blend-mode:multiply;
+  border:none !important;width:auto !important;height:auto !important;
+}
+/* remove old corner marks */
+.place-card::after{display:none !important}
+
+.place-img{
+  aspect-ratio:1/1 !important; /* square photo area, polaroid style */
+  filter:sepia(10%) saturate(88%) contrast(96%);
+  border-radius:0 !important;
+}
+.place-info{padding:1rem 0 0 !important}
+.place-info h4{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:400;
+  margin-bottom:.3rem;color:var(--dark);
+}
+.place-type{
+  font-size:.55rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--sage);margin-bottom:.3rem;
+}
+.place-info p{font-size:.72rem;color:var(--muted);font-weight:300;line-height:1.6}
+
+/* alternate slight rotations on place cards for natural feel */
+.place-grid .place-card:nth-child(1){transform:rotate(-1.5deg)}
+.place-grid .place-card:nth-child(1):hover{transform:translateY(-8px) rotate(-1.5deg) scale(1.01) !important}
+.place-grid .place-card:nth-child(2){transform:rotate(.8deg)}
+.place-grid .place-card:nth-child(2):hover{transform:translateY(-8px) rotate(.8deg) scale(1.01) !important}
+.place-grid .place-card:nth-child(3){transform:rotate(-1deg)}
+.place-grid .place-card:nth-child(3):hover{transform:translateY(-8px) rotate(-1deg) scale(1.01) !important}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -972,6 +1026,60 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
   /* Section padding */
   #s-presenca,#s-presentes,#s-guia,#s-local{padding:5rem 0}
 }
+
+/* ════ POLAROID — feat cards e place cards ════ */
+
+/* O Grande Dia — feat cards: estilo original escuro */
+
+/* Guia POA — place cards polaroid */
+.place-card{
+  background:#fff !important;
+  border:none !important;
+  border-radius:2px !important;
+  padding:12px 12px 44px 12px !important;
+  box-shadow:0 8px 24px rgba(0,0,0,.11), 0 2px 6px rgba(0,0,0,.05) !important;
+  transition:transform .4s cubic-bezier(.175,.885,.32,1.1),box-shadow .4s !important;
+  overflow:visible !important;
+  position:relative;
+}
+.place-card:hover{
+  transform:translateY(-8px) rotate(-1deg) scale(1.01) !important;
+  box-shadow:0 20px 48px rgba(0,0,0,.16) !important;
+}
+/* grain on place cards */
+.place-card::before{
+  content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size:120px;opacity:.03;mix-blend-mode:multiply;
+  border:none !important;width:auto !important;height:auto !important;
+}
+/* remove old corner marks */
+.place-card::after{display:none !important}
+
+.place-img{
+  aspect-ratio:1/1 !important; /* square photo area, polaroid style */
+  filter:sepia(10%) saturate(88%) contrast(96%);
+  border-radius:0 !important;
+}
+.place-info{padding:1rem 0 0 !important}
+.place-info h4{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:400;
+  margin-bottom:.3rem;color:var(--dark);
+}
+.place-type{
+  font-size:.55rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--sage);margin-bottom:.3rem;
+}
+.place-info p{font-size:.72rem;color:var(--muted);font-weight:300;line-height:1.6}
+
+/* alternate slight rotations on place cards for natural feel */
+.place-grid .place-card:nth-child(1){transform:rotate(-1.5deg)}
+.place-grid .place-card:nth-child(1):hover{transform:translateY(-8px) rotate(-1.5deg) scale(1.01) !important}
+.place-grid .place-card:nth-child(2){transform:rotate(.8deg)}
+.place-grid .place-card:nth-child(2):hover{transform:translateY(-8px) rotate(.8deg) scale(1.01) !important}
+.place-grid .place-card:nth-child(3){transform:rotate(-1deg)}
+.place-grid .place-card:nth-child(3):hover{transform:translateY(-8px) rotate(-1deg) scale(1.01) !important}
 </style>
 
 
