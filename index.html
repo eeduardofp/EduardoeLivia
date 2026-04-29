@@ -1825,7 +1825,18 @@ ScrollTrigger.create({
       ScrollTrigger.refresh();
       // Force video play on mobile
       const heroVid = document.querySelector('#heroVideoSlot video');
-      if(heroVid){ heroVid.play().catch(()=>{}); }
+      if(heroVid){
+        heroVid.play().catch(()=>{
+          // iOS Safari requires user gesture — play on first touch
+          const playOnTouch = () => {
+            heroVid.play().catch(()=>{});
+            document.removeEventListener('touchstart', playOnTouch);
+            document.removeEventListener('click', playOnTouch);
+          };
+          document.addEventListener('touchstart', playOnTouch, {once:true, passive:true});
+          document.addEventListener('click', playOnTouch, {once:true});
+        });
+      }
     }, 400);
   }, total);
 })();
