@@ -1001,7 +1001,7 @@ footer{background:var(--dark);text-align:center;padding:3rem;color:rgba(247,245,
 <!-- ════ HERO ════ -->
 <section id="hero">
   <div class="hero-video-slot" id="heroVideoSlot">
-    <video autoplay muted loop playsinline>
+    <video autoplay muted loop playsinline webkit-playsinline x5-playsinline preload="auto" disablepictureinpicture>
       <source src="hero-video.mp4" type="video/mp4">
     </video>
   </div>
@@ -1538,6 +1538,9 @@ ScrollTrigger.create({
     setTimeout(() => {
       loader.classList.add('hide');
       ScrollTrigger.refresh();
+      // Force video play on mobile
+      const heroVid = document.querySelector('#heroVideoSlot video');
+      if(heroVid){ heroVid.play().catch(()=>{}); }
     }, 400);
   }, total);
 })();
