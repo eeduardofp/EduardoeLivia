@@ -1586,9 +1586,8 @@ gsap.utils.toArray('.rv').forEach(el=>{
     if(!isDragging)return; isDragging=false;
     track.classList.remove('dragging');
     const dx=e.clientX-dragStartX;
-    const thr=CARD_W*0.3;
-    if(dx < -thr) goTo(idx+1);
-    else if(dx > thr) goTo(idx-1);
+    const steps=Math.round(Math.abs(dx)/(CARD_W+GAP));
+    if(steps>0) goTo(idx+(dx<0 ? steps : -steps));
     else goTo(idx);
   });
   track.addEventListener('click',e=>{
@@ -1619,9 +1618,8 @@ gsap.utils.toArray('.rv').forEach(el=>{
     track.classList.remove('dragging');
     if(touchDir!=='h'){ touchDir=null; return; }
     const dx=e.changedTouches[0].clientX-touchStartX;
-    const thr=CARD_W*0.3;
-    if(dx < -thr) goTo(idx+1);
-    else if(dx > thr) goTo(idx-1);
+    const steps=Math.round(Math.abs(dx)/(CARD_W+GAP));
+    if(steps>0) goTo(idx+(dx<0 ? steps : -steps));
     else goTo(idx);
     touchDir=null;
   });
