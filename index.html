@@ -255,7 +255,7 @@ nav.menu-open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-4
 /* ── STORY SCROLL ── */
 .flow-art-container{position:relative;min-height:100vh;width:100%;display:flex;align-items:center;justify-content:center;will-change:transform;transform-origin:bottom left}
 #s-galeria{position:relative;z-index:1}
-#s-presenca{min-height:100vh;position:relative;z-index:2;overflow:hidden;padding:0;background:none}
+#s-presenca{min-height:100vh;position:relative;z-index:2;overflow:clip;padding:0;background:none}
 #s-presentes{padding:0;position:relative;z-index:3;overflow:hidden;background:none}
 #s-presentes .flow-art-container{align-items:center;padding:5rem 0;background:none}
 .presentes-bg{position:absolute;inset:0;background:url('Fotos/Fundo de imagem.png') center/cover no-repeat;filter:blur(20px);transform:scale(1.1);z-index:0}
@@ -275,7 +275,7 @@ nav.menu-open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-4
 /* presença background */
 .presenca-bg{position:absolute;inset:0;background:url('Fotos/Fundo.png') center/cover no-repeat;filter:blur(20px);transform:scale(1.1);z-index:0}
 /* glassmorphism panel */
-.presenca-panel{position:relative;z-index:1;width:min(660px,92vw);background:rgba(255,255,255,.10);backdrop-filter:blur(24px) saturate(1.5);-webkit-backdrop-filter:blur(24px) saturate(1.5);border:1px solid rgba(255,255,255,.18);border-top:1px solid rgba(255,255,255,.32);box-shadow:0 40px 80px rgba(0,0,0,.30),0 8px 20px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.22);padding:clamp(2.5rem,5vw,4rem) clamp(2rem,5vw,3.5rem);transform:perspective(1000px) rotateX(1.5deg)}
+.presenca-panel{position:relative;z-index:1;width:min(660px,92vw);background:rgba(255,255,255,.10);backdrop-filter:blur(24px) saturate(1.5);-webkit-backdrop-filter:blur(24px) saturate(1.5);border:1px solid rgba(255,255,255,.18);border-top:1px solid rgba(255,255,255,.32);box-shadow:0 40px 80px rgba(0,0,0,.30),0 8px 20px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.22);padding:clamp(2.5rem,5vw,4rem) clamp(2rem,5vw,3.5rem)}
 .presenca-panel .s-label{color:rgba(255,255,255,.9)}
 .presenca-panel .s-label::before,.presenca-panel .s-label::after{background:rgba(255,255,255,.65)}
 .presenca-panel .s-title{color:#fff;margin-bottom:1rem}
@@ -317,7 +317,7 @@ nav.menu-open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-4
 .tog input:checked+.tog-track{background:var(--navy)}
 .tog-thumb{position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;pointer-events:none;transition:transform .3s;box-shadow:0 1px 4px rgba(0,0,0,.18)}
 .tog input:checked~.tog-thumb{transform:translateX(18px)}
-.btn{display:inline-block;padding:1rem 3rem;background:var(--dark);color:#fff;font-family:'Jost',sans-serif;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;border:none;cursor:pointer;font-weight:300;transition:all .35s;text-decoration:none}
+.btn{display:inline-block;padding:1rem 3rem;background:var(--dark);color:#fff;font-family:'Jost',sans-serif;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;border:none;cursor:pointer;font-weight:300;transition:all .35s;text-decoration:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .btn:hover{background:#1E2A38;transform:translateY(-2px)}
 .btn-ol{background:none;border:1px solid var(--dark);color:var(--dark)}
 .btn-ol:hover{background:var(--dark);color:#fff}
@@ -588,6 +588,9 @@ footer{background:var(--cream);text-align:center;padding:3rem;color:var(--muted)
   /* Floating CTA */
   #floating-cta{bottom:1rem;right:1rem;gap:.4rem}
   .fcta-btn{padding:.7rem 1.2rem;font-size:.55rem}
+
+  /* Confirm button mobile — full width, bigger tap target */
+  .presenca-panel .btn{display:block;width:100%;text-align:center;padding:1.1rem 1.5rem}
 
   /* Section padding */
   #s-presenca,#s-presentes,#s-local{padding:5rem 0}
