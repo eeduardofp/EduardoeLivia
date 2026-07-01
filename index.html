@@ -456,8 +456,8 @@ footer{background:var(--cream);text-align:center;padding:3rem;color:var(--muted)
 
 /* 3 cards iguais */
 .dc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.dc-card{position:relative;overflow:hidden;border-radius:12px;height:260px;background:var(--dark)}
-.dc-card-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;z-index:0}
+.dc-card{position:relative;overflow:hidden;border-radius:12px;height:340px;background:#f0eeea}
+.dc-card-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center center;display:block;z-index:0}
 .dc-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,rgba(0,0,0,.15) 55%,transparent 100%);z-index:1}
 .dc-card-inner{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.8rem;z-index:2}
 .dc-card-sup{font-size:.48rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.65);display:block;margin-bottom:.3rem;font-family:'Jost',sans-serif}
@@ -596,7 +596,7 @@ footer{background:var(--cream);text-align:center;padding:3rem;color:var(--muted)
 
   /* Dress code mobile */
   .dc-grid{grid-template-columns:1fr;gap:10px}
-  .dc-card{height:160px}
+  .dc-card{height:380px}
   .dc-text-outer{padding:0 1.5rem;margin-top:2.5rem}
 
 }
