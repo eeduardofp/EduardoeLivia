@@ -362,7 +362,7 @@ nav.menu-open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-4
 @keyframes twBlink{0%,100%{opacity:1}50%{opacity:0}}
 /* drag carousel */
 .guia-carousel-wrap{overflow:hidden;padding:1.5rem 0 2rem;position:relative;touch-action:pan-y pinch-zoom}
-.guia-carousel-track{display:flex;gap:1.5rem;will-change:transform;transition:transform .45s cubic-bezier(.25,.46,.45,.94);cursor:grab;user-select:none;-webkit-user-select:none}
+.guia-carousel-track{display:flex;gap:1.5rem;will-change:transform;transition:transform .5s cubic-bezier(.2,0,.0,1);cursor:grab;user-select:none;-webkit-user-select:none}
 .guia-carousel-track.dragging{transition:none;cursor:grabbing}
 .guia-carousel-item{flex:0 0 200px}
 .guia-nav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:.5rem}
@@ -1587,8 +1587,10 @@ gsap.utils.toArray('.rv').forEach(el=>{
     track.classList.remove('dragging');
     const dx=e.clientX-dragStartX;
     const steps=Math.round(Math.abs(dx)/(CARD_W+GAP));
-    if(steps>0) goTo(idx+(dx<0 ? steps : -steps));
-    else goTo(idx);
+    requestAnimationFrame(()=>{
+      if(steps>0) goTo(idx+(dx<0 ? steps : -steps));
+      else goTo(idx);
+    });
   });
   track.addEventListener('click',e=>{
     if(wasDragged){ e.preventDefault(); wasDragged=false; }
@@ -1619,9 +1621,11 @@ gsap.utils.toArray('.rv').forEach(el=>{
     if(touchDir!=='h'){ touchDir=null; return; }
     const dx=e.changedTouches[0].clientX-touchStartX;
     const steps=Math.round(Math.abs(dx)/(CARD_W+GAP));
-    if(steps>0) goTo(idx+(dx<0 ? steps : -steps));
-    else goTo(idx);
-    touchDir=null;
+    const dir=touchDir; touchDir=null;
+    requestAnimationFrame(()=>{
+      if(steps>0) goTo(idx+(dx<0 ? steps : -steps));
+      else goTo(idx);
+    });
   });
 
   window.addEventListener('resize',()=>goTo(idx,true));
