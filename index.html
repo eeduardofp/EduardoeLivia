@@ -456,14 +456,12 @@ footer{background:var(--cream);text-align:center;padding:3rem;color:var(--muted)
 
 /* 3 cards iguais */
 .dc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.dc-card{position:relative;overflow:hidden;border-radius:12px;height:260px}
-.dc-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,rgba(0,0,0,.08) 55%,transparent 100%);z-index:1}
+.dc-card{position:relative;overflow:hidden;border-radius:12px;height:260px;background:var(--dark)}
+.dc-card-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;z-index:0}
+.dc-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,rgba(0,0,0,.15) 55%,transparent 100%);z-index:1}
 .dc-card-inner{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.8rem;z-index:2}
 .dc-card-sup{font-size:.48rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.65);display:block;margin-bottom:.3rem;font-family:'Jost',sans-serif}
 .dc-card-name{font-family:'Lusitana',serif;font-size:1.6rem;font-weight:400;color:#fff;letter-spacing:.04em;line-height:1.2}
-.dc-card--fem{background:linear-gradient(145deg,#b2c2d4 0%,#8296B0 100%)}
-.dc-card--masc{background:linear-gradient(145deg,#4a5f76 0%,#2C3A4E 100%)}
-.dc-card--pal{background:linear-gradient(145deg,#7A90A8 0%,#5D7B9F 100%)}
 
 /* Texto full-width abaixo dos cards */
 .dc-text-outer{max-width:1100px;margin:3.5rem auto 0;padding:0 clamp(2rem,7vw,7rem);position:relative;z-index:1}
@@ -1118,25 +1116,28 @@ footer{background:var(--cream);text-align:center;padding:3rem;color:var(--muted)
       <h2 class="s-title">O que <em>vestir</em></h2>
     </div>
     <div class="dc-grid">
-      <div class="dc-card dc-card--fem rv">
+      <div class="dc-card rv">
+        <img class="dc-card-bg" src="Fotos/Traje 2.jpg" alt="">
         <div class="dc-card-overlay"></div>
         <div class="dc-card-inner">
           <span class="dc-card-sup">Para ela</span>
           <div class="dc-card-name">Feminino</div>
         </div>
       </div>
-      <div class="dc-card dc-card--masc rv rv-d2">
+      <div class="dc-card rv rv-d2">
+        <img class="dc-card-bg" src="Fotos/Traje 1.jpg" alt="">
         <div class="dc-card-overlay"></div>
         <div class="dc-card-inner">
           <span class="dc-card-sup">Para ele</span>
           <div class="dc-card-name">Masculino</div>
         </div>
       </div>
-      <div class="dc-card dc-card--pal rv rv-d3">
+      <div class="dc-card rv rv-d3">
+        <img class="dc-card-bg" src="Fotos/Traje 3.jpg" alt="">
         <div class="dc-card-overlay"></div>
         <div class="dc-card-inner">
-          <span class="dc-card-sup">Cores</span>
-          <div class="dc-card-name">Paleta</div>
+          <span class="dc-card-sup">Sugestões</span>
+          <div class="dc-card-name">Inspirações</div>
         </div>
       </div>
     </div>
@@ -1147,7 +1148,7 @@ footer{background:var(--cream);text-align:center;padding:3rem;color:var(--muted)
     <p><strong>Feminino :</strong> Vestidos midi ou longos, macacões ou conjuntos em tecidos elegantes. Salto é opcional — escolha o calçado com o qual você se sinta mais confortável, mas caso use salto, escolha um bloco. E pode apostar nos acessórios sem medo: eles são sempre bem-vindos para complementar o look!</p>
     <p><strong>Masculino :</strong> Terno ou costume com camisa social. Gravata é opcional. Sapatos sociais, mocassins ou tênis sociais são ótimas escolhas para completar a produção com elegância e conforto, e não esqueça que você também pode apostar em um relógio bonito e um perfume agradável.</p>
     <p><strong>Paleta de cores :</strong> Sintam-se à vontade para escolher a cor que mais combina com vocês! Pedimos apenas que evitem branco (esse já tem dona nesse dia), além dos tons de verde claro e azul claro, que serão usados pelas madrinhas e damas.</p>
-    <p>O mais importante é que vocês se sintam bem e confortáveis para celebrar, se divertir e aproveitar cada momento conosco. ✨</p>
+    <p>O mais importante é que vocês se sintam bem e confortáveis para celebrar, se divertir e aproveitar cada momento conosco.</p>
   </div>
 </section>
 
