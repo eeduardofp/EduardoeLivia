@@ -1376,32 +1376,21 @@ function closeMobileMenu(){
     ]);
   }
 
-  // fade-in scrub do overlay (285→300vh) + dispara typewriter na entrada
+  // fade-in scrub do overlay (285→300vh) + dispara typewriter + verso na entrada
   ScrollTrigger.create({
     start:()=> zp.offsetTop + vh()*2.85,
     end:()=>   zp.offsetTop + vh()*3,
     scrub:true,
-    onEnter:()=>{ if(!twStarted){ twStarted=true; startTypewriter(); } },
+    onEnter:()=>{
+      if(!twStarted){
+        twStarted=true;
+        startTypewriter();
+        // verso revela automaticamente com stagger suave
+        gsap.to('.frase-word',{opacity:1,duration:0.5,stagger:0.055,delay:0.7,ease:'power2.out'});
+      }
+    },
     onUpdate: self => { gsap.set(overlay,{opacity: self.progress}); }
   });
-
-  // word-by-word reveal do verso (300→370vh)
-  ;(function(){
-    const vWords = document.querySelectorAll('.frase-word');
-    if(!vWords.length) return;
-    ScrollTrigger.create({
-      start:()=> zp.offsetTop + vh()*3,
-      end:()=>   zp.offsetTop + vh()*3.7,
-      scrub:true,
-      onUpdate: self => {
-        const p = self.progress;
-        vWords.forEach((w, i) => {
-          const s = i / vWords.length, e = s + 1 / vWords.length;
-          w.style.opacity = 0.12 + Math.min(1, Math.max(0, (p - s) / (e - s))) * 0.88;
-        });
-      }
-    });
-  })();
 
   // parallax saída nos últimos 100vh da galeria (300vh→400vh)
   const fraseTl = gsap.timeline({
