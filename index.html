@@ -454,14 +454,8 @@ footer{background:var(--cream);text-align:center;padding:3rem;color:var(--muted)
 .info-inner{max-width:960px;margin:0 auto;padding:0 clamp(1.5rem,5vw,4rem);position:relative;z-index:1}
 .info-header{text-align:center;margin-bottom:3.5rem}
 
-/* 3 cards iguais */
-.dc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.dc-card{position:relative;overflow:hidden;border-radius:12px;height:340px;background:#f0eeea}
-.dc-card-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center center;display:block;z-index:0}
-.dc-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,rgba(0,0,0,.15) 55%,transparent 100%);z-index:1}
-.dc-card-inner{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.8rem;z-index:2}
-.dc-card-sup{font-size:.48rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.65);display:block;margin-bottom:.3rem;font-family:'Jost',sans-serif}
-.dc-card-name{font-family:'Lusitana',serif;font-size:1.6rem;font-weight:400;color:#fff;letter-spacing:.04em;line-height:1.2}
+/* Imagem única dress code */
+.dc-single{display:block;width:100%;border-radius:12px;object-fit:contain}
 
 /* Texto full-width abaixo dos cards */
 .dc-text-outer{max-width:1100px;margin:3.5rem auto 0;padding:0 clamp(2rem,7vw,7rem);position:relative;z-index:1}
@@ -598,8 +592,6 @@ footer{background:var(--cream);text-align:center;padding:3rem;color:var(--muted)
   #s-info{padding:4rem 0}
 
   /* Dress code mobile */
-  .dc-grid{grid-template-columns:1fr;gap:10px}
-  .dc-card{height:380px}
   .dc-text-outer{padding:0 1.5rem;margin-top:2.5rem}
 
 }
@@ -1118,17 +1110,7 @@ footer{background:var(--cream);text-align:center;padding:3rem;color:var(--muted)
       <p class="s-label">Dress Code</p>
       <h2 class="s-title">O que <em>vestir</em></h2>
     </div>
-    <div class="dc-grid">
-      <div class="dc-card rv">
-        <img class="dc-card-bg" src="Fotos/Traje 2.jpg" alt="">
-      </div>
-      <div class="dc-card rv rv-d2">
-        <img class="dc-card-bg" src="Fotos/Traje 1.jpg" alt="">
-      </div>
-      <div class="dc-card rv rv-d3">
-        <img class="dc-card-bg" src="Fotos/Traje 3.jpg" alt="">
-      </div>
-    </div>
+    <img class="dc-single rv" src="Fotos/Traje 4.png" alt="Dress Code">
   </div>
   <div class="dc-text-outer rv">
     <p class="s-label">Esporte Fino</p>
