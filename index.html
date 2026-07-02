@@ -264,29 +264,29 @@ nav.menu-open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-4
 #s-presentes .flow-art-container{align-items:center;padding:5rem 0;background:none}
 .presentes-bg{position:absolute;inset:0;background:url('Fotos/Fundo de imagem.png') center/cover no-repeat;filter:blur(20px);transform:scale(1.1);z-index:0}
 .presentes-panel{position:relative;z-index:1;width:min(960px,94vw);background:rgba(255,255,255,.10);backdrop-filter:blur(24px) saturate(1.5);-webkit-backdrop-filter:blur(24px) saturate(1.5);border:1px solid rgba(255,255,255,.18);border-top:1px solid rgba(255,255,255,.32);box-shadow:0 40px 80px rgba(0,0,0,.30),0 8px 20px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.22);padding:clamp(2.5rem,5vw,4rem) clamp(2rem,5vw,3.5rem);transform:perspective(1000px) rotateX(1.5deg)}
-.presentes-panel .s-label{color:var(--sage-light)}
-.presentes-panel .s-label::before,.presentes-panel .s-label::after{background:currentColor}
+.presentes-panel .s-label{color:rgba(255,255,255,.9)}
+.presentes-panel .s-label::before,.presentes-panel .s-label::after{background:rgba(255,255,255,.65)}
 .presentes-panel .s-title{color:#fff;margin-bottom:1.8rem}
 .presentes-panel .s-title em{color:rgba(255,255,255,.95)}
 .presentes-panel .presentes-grid{gap:1.5rem;margin-top:2rem}
 .presentes-panel .pc{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);outline:none}
 .presentes-panel .pc::before{background:linear-gradient(90deg,rgba(255,255,255,.25),rgba(255,255,255,.45))}
 .presentes-panel .pc:hover{background:rgba(255,255,255,.14);box-shadow:0 16px 40px rgba(0,0,0,.2)}
-.presentes-panel .pc h3{color:#fff}
-.presentes-panel .pc p{color:rgba(255,255,255,.90)}
+.presentes-panel .pc h3{color:var(--slate-light)}
+.presentes-panel .pc p{color:var(--slate-light)}
 .presentes-panel .pix-chip{border-color:rgba(255,255,255,.3);color:#fff}
 .presentes-panel .pix-chip:hover{border-color:#fff;background:rgba(255,255,255,.15);color:#fff}
 /* presenÃ§a background */
 .presenca-bg{position:absolute;inset:0;background:url('Fotos/Fundo.png') center/cover no-repeat;filter:blur(20px);transform:scale(1.1);z-index:0}
 /* glassmorphism panel */
 .presenca-panel{position:relative;z-index:1;width:min(660px,92vw);background:rgba(255,255,255,.10);backdrop-filter:blur(24px) saturate(1.5);-webkit-backdrop-filter:blur(24px) saturate(1.5);border:1px solid rgba(255,255,255,.18);border-top:1px solid rgba(255,255,255,.32);box-shadow:0 40px 80px rgba(0,0,0,.30),0 8px 20px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.22);padding:clamp(2.5rem,5vw,4rem) clamp(2rem,5vw,3.5rem)}
-.presenca-panel .s-label{color:var(--sage-light)}
-.presenca-panel .s-label::before,.presenca-panel .s-label::after{background:currentColor}
+.presenca-panel .s-label{color:rgba(255,255,255,.9)}
+.presenca-panel .s-label::before,.presenca-panel .s-label::after{background:rgba(255,255,255,.65)}
 .presenca-panel .s-title{color:#fff;margin-bottom:1rem}
 .presenca-panel .s-title em{color:rgba(255,255,255,.95)}
-.presenca-panel .s-body{color:rgba(255,255,255,.88);max-width:none;margin-bottom:2rem}
+.presenca-panel .s-body{color:var(--slate-light);max-width:none;margin-bottom:2rem}
 .presenca-panel .s-body strong{color:#fff;font-weight:600}
-.presenca-panel .fl{color:rgba(255,255,255,.78)}
+.presenca-panel .fl{color:var(--slate-light)}
 .presenca-panel .fi{color:#fff;border-bottom-color:rgba(255,255,255,.25)}
 .presenca-panel .fi:focus{border-bottom-color:rgba(255,255,255,.65)}
 .presenca-panel .fi::placeholder{color:rgba(255,255,255,.25)}
@@ -810,7 +810,7 @@ footer{background:var(--cream);text-align:center;padding:3rem;color:var(--muted)
         <button class="btn" style="margin-top:2.2rem" id="confirmBtn" onclick="submitPresence()" disabled>
           Confirmar presenÃ§a
         </button>
-        <div id="formNote" style="margin-top:.8rem;font-size:.65rem;color:rgba(255,255,255,.45)">
+        <div id="formNote" style="margin-top:.8rem;font-size:.65rem;color:var(--slate-light)">
           Selecione ao menos um nome para confirmar
         </div>
       </div>
