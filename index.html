@@ -315,9 +315,9 @@ nav.menu-open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-4
 .toggle-row{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;border-bottom:1px solid rgba(149,165,141,.18);gap:1rem}
 .tlt{font-size:.82rem;color:var(--text);font-weight:300}
 .tlsub{font-size:.68rem;color:var(--muted);margin-top:.15rem}
-.tog{position:relative;width:42px;height:24px;flex-shrink:0}
-.tog input{display:none}
-.tog-track{position:absolute;inset:0;border-radius:12px;background:var(--sage-light);cursor:pointer;transition:background .3s}
+.tog{position:relative;width:42px;height:24px;flex-shrink:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.tog input{position:absolute;inset:0;opacity:0;width:100%;height:100%;margin:0;cursor:pointer;z-index:1}
+.tog-track{position:absolute;inset:0;border-radius:12px;background:var(--sage-light);transition:background .3s;pointer-events:none}
 .tog input:checked+.tog-track{background:var(--navy)}
 .tog-thumb{position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;pointer-events:none;transition:transform .3s;box-shadow:0 1px 4px rgba(0,0,0,.18)}
 .tog input:checked~.tog-thumb{transform:translateX(18px)}
